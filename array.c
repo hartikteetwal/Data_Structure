@@ -122,7 +122,7 @@ int main()
     main()
 {
     int arr[] = {12, 3, 4, 2, 55};
-    int target = 12; // Fixed typo here
+    int target = 12; 
     int len = sizeof(arr) / sizeof(arr[0]);
 
     for (int i = 0; i < len; i++)
@@ -130,10 +130,53 @@ int main()
         if (target == arr[i])
         {
             printf("Target found at index: %d\n", i);
-            return 0; // Exit after finding the target
+            return 0;
         }
     }
 
     printf("Target not found.\n");
+    return 0;
+}
+
+
+// Binary search ---> work only in the sorted array
+#include <stdio.h>
+int find_number(int arr[], int target, int size)
+{
+    int min = 0;
+    int max = size;
+    while (min <= max)
+    {
+        int mid = (min + max) / 2;
+        if (arr[mid] == target)
+        {
+            return mid;
+        }
+        else if (target > arr[mid])
+        {
+            min = mid + 1;
+        }
+        else
+        {
+            max = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    int arr[] = {2, 4, 6, 8, 23, 55, 77, 86};
+    int target = 8;
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int result = find_number(arr, target, size);
+    if (result != -1)
+    {
+        printf("%d at index %d", target, result);
+    }
+    else
+    {
+        printf("%d is not found", target);
+    }
     return 0;
 }
