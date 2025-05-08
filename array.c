@@ -180,3 +180,67 @@ int main()
     }
     return 0;
 }
+
+
+// bubble sort
+#include <stdio.h>
+void peint_arr(int arr[], int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        printf("%d", arr[i]);
+    }
+    printf("\n");
+}
+int main()
+{
+    int arr[] = {2, 4, 2, 55, 3, 27, 8};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    peint_arr(arr, len);
+    for (int i = 0; i < len - 1; i++)
+    {
+        for (int j = 0; j < len - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    peint_arr(arr, len);
+}
+
+// selection sort
+#include <stdio.h>
+void peint_arr(int arr[], int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main()
+{
+    int arr[] = {2, 4, 2, 55, 3, 27, 8};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    peint_arr(arr, len);
+    int min;
+    for (int i = 0; i < len - 1; i++)
+    {
+        min = i;
+        for (int j = i+1; j < len; j++)
+        {
+            if (arr[j] < arr[min])
+            {
+                min = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+    peint_arr(arr, len);
+}
